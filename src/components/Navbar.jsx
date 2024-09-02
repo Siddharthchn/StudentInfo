@@ -10,7 +10,6 @@ function Navbar() {
   const menuRef = useRef(null);
   const dropdownRef = useRef(null);
 
-  // Handle click outside to close the dropdown
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -26,9 +25,8 @@ function Navbar() {
     const menu = menuRef.current;
 
     if (isOpen) {
-      // Block scrolling
       document.body.style.overflow = "hidden";
-      menu.style.display = "flex"; // Ensure menu is visible before animation
+      menu.style.display = "flex"; 
       gsap.to(menu, { x: 0, duration: 0.5, ease: "power2.inOut" });
     } else {
       gsap.to(menu, {
@@ -36,9 +34,8 @@ function Navbar() {
         duration: 0.5,
         ease: "power2.inOut",
         onComplete: () => {
-          menu.style.display = "none"; // Hide after animation
-          setDropdownOpen(false); // Close dropdown when the menu is closed
-          // Allow scrolling again
+          menu.style.display = "none"; 
+          setDropdownOpen(false); 
           document.body.style.overflow = "auto";
         },
       });
@@ -55,7 +52,7 @@ function Navbar() {
 
   const closeMenu = () => {
     setIsOpen(false);
-    setDropdownOpen(false); // Ensure dropdown is closed
+    setDropdownOpen(false); 
   };
 
   return (
@@ -65,7 +62,7 @@ function Navbar() {
           <img src={img} alt="" className="w-full h-full object-cover" />
         </Link>
         <button
-          className="text-white focus:outline-none md:hidden"
+          className="text-white focus:outline-none md:hidden text-xl"
           onClick={toggleMenu}
         >
           ☰
@@ -111,7 +108,7 @@ function Navbar() {
         ref={menuRef}
         className="mobile-menu fixed top-0 right-0 w-full h-full bg-gray-800 z-50 transform translate-x-full md:hidden flex flex-col items-start px-6 py-4"
       >
-        <button className="text-white text-3xl self-end" onClick={toggleMenu}>
+        <button className="text-white text-2xl self-end" onClick={toggleMenu}>
           ×
         </button>
         <div className="ml-2 mt-4 flex flex-col gap-[8px]">
